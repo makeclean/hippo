@@ -58,15 +58,15 @@ if [ "$BUILD_JOBS" -eq "0" ]; then
     BUILD_JOBS=""
 fi;
 
-OPENFOAM_DIR="${OUT_DIR}/OpenFOAM-12"
-OPENFOAM_REV="9ec94dd57a8d98c3f3422ce9b2156a8b268bbda6"
-THIRDPARTY_DIR="${OUT_DIR}/ThirdParty-12"
-THIRDPARTY_REV="cab725f5e7929e8f5ec35c54edc493a822355235"
+OPENFOAM_DIR="${OUT_DIR}/OpenFOAM-9"
+OPENFOAM_REV="d87800e1bde07696061acb231ec68df126a937cc"
+THIRDPARTY_DIR="${OUT_DIR}/ThirdParty-9"
+THIRDPARTY_REV="c2955cc9ce7604007795fd63d610ffc9fcb9c7e2"
 
 # Fetch and patch OpenFOAM
 mkdir -p "${OPENFOAM_DIR}"
 if [ ! -d "${OPENFOAM_DIR}/.git" ]; then
-    git clone https://github.com/OpenFOAM/OpenFOAM-12.git "${OPENFOAM_DIR}"
+    git clone https://github.com/OpenFOAM/OpenFOAM-9.git "${OPENFOAM_DIR}"
 fi
 git -C "${OPENFOAM_DIR}" reset --hard "${OPENFOAM_REV}"
 git -C "${OPENFOAM_DIR}" apply "${SCRIPT_DIR}/openfoam.patch"
@@ -74,7 +74,7 @@ git -C "${OPENFOAM_DIR}" apply "${SCRIPT_DIR}/openfoam.patch"
 # Set up OpenFOAM
 source "${OPENFOAM_DIR}/etc/bashrc" || true
 
-echo "Hippo installing OpenFOAM-12 with options:"
+echo "Hippo installing OpenFOAM-9 with options:"
 echo "------------------------------------------"
 echo "  WM_ARCH_OPTION:      ${WM_ARCH_OPTION}"
 echo "  WM_COMPILE_OPTION:   ${WM_COMPILE_OPTION}"
@@ -86,7 +86,7 @@ echo "  WM_PRECISION_OPTION: ${WM_PRECISION_OPTION}"
 
 mkdir -p "${THIRDPARTY_DIR}"
 if [ ! -d "${THIRDPARTY_DIR}/.git" ]; then
-    git clone https://github.com/OpenFOAM/ThirdParty-12.git "${THIRDPARTY_DIR}"
+    git clone https://github.com/OpenFOAM/ThirdParty-9.git "${THIRDPARTY_DIR}"
 fi
 git -C "${THIRDPARTY_DIR}" reset --hard "${THIRDPARTY_REV}"
 (
