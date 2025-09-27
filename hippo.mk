@@ -28,8 +28,7 @@ ADDITIONAL_INCLUDES := \
     $(ADDITIONAL_INCLUDES)
 
 
-ADDITIONAL_CPPFLAGS += $(shell echo -D$(WM_ARCH) \
-                                    -DWM_ARCH_OPTION=$(WM_ARCH_OPTION)\
+ADDITIONAL_CPPFLAGS += $(shell echo -DWM_ARCH_OPTION=$(WM_ARCH_OPTION)\
                                     -DWM_LABEL_SIZE=$(WM_LABEL_SIZE)\
                                     -DWM_$(WM_PRECISION_OPTION) \
                                     -DNoRepository -ftemplate-depth-100 \
