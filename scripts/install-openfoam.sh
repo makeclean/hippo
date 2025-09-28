@@ -72,7 +72,7 @@ git -C "${OPENFOAM_DIR}" reset --hard "${OPENFOAM_REV}"
 git -C "${OPENFOAM_DIR}" apply "${SCRIPT_DIR}/openfoam.patch"
 
 # Set up OpenFOAM
-source "${OPENFOAM_DIR}/etc/bashrc" || true
+bash -c "source ${OPENFOAM_DIR}/etc/bashrc || true"
 
 echo "Hippo installing OpenFOAM-13 with options:"
 echo "------------------------------------------"
@@ -91,6 +91,7 @@ fi
 git -C "${THIRDPARTY_DIR}" reset --hard "${THIRDPARTY_REV}"
 (
     cd "${THIRDPARTY_DIR}" \
+    export ZOLTAN_TYPE=none \
     && ./Allwmake
 )
 
