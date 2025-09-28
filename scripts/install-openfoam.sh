@@ -91,7 +91,7 @@ fi
 git -C "${THIRDPARTY_DIR}" reset --hard "${THIRDPARTY_REV}"
 (
     cd "${THIRDPARTY_DIR}" \
-    export ZOLTAN_TYPE=none \
+    && export ZOLTAN_TYPE=none \
     && ./Allwmake
 )
 
