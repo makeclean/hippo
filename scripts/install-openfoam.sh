@@ -91,7 +91,7 @@ fi
 git -C "${THIRDPARTY_DIR}" reset --hard "${THIRDPARTY_REV}"
 (
     cd "${THIRDPARTY_DIR}" \
-    && sed -i '497s/*./                --with-mpi-libdir=$MPI_ARCH_PATH/lib \/' ./Allwake \
+    && sed -i '497s/*./                --with-mpi-libdir=$MPI_ARCH_PATH\/lib \/' ./Allwake \
     && ./Allwmake
 )
 
